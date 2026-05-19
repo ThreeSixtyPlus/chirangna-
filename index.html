@@ -3,633 +3,618 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chitrangana Sharma | International Fashion Model</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Didact+Gothic&display=swap" rel="stylesheet">
+<title>Portfolio Page Options · Angela Clark</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --gold:#C5A55A;--gold-light:#D4BA7A;--gold-dark:#A08040;
-  --black:#0A0A0A;--black-soft:#141414;
-  --white:#F5F0EB;--white-pure:#FDFBF8;
-  --grey:#8A8580;--grey-light:#B5B0AA;--cream:#F0E8DC;
-}
-html{scroll-behavior:smooth;overflow-x:hidden;}
-body{font-family:'Didact Gothic',sans-serif;background:var(--black);color:var(--white);overflow:hidden;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#080808;--black2:#0f0f0f;--black3:#1a1a1a;--gold:#C9A96E;--cream:#F5F0EB;--border:rgba(201,169,110,0.1)}
+html,body{background:#050505;color:var(--cream);font-family:'Outfit',sans-serif;scroll-behavior:smooth}
 
-/* ==================== WELCOME GATE ==================== */
-#welcomeGate{
-  position:fixed;inset:0;z-index:10000;
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  overflow:hidden;transition:opacity 1.2s ease,transform 1.2s ease;
-  background:var(--black);
-}
-#welcomeGate.leaving{opacity:0;transform:scale(1.06);pointer-events:none;}
+/* ── STICKY NAV ── */
+.main-nav{position:sticky;top:0;z-index:200;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
+.main-nav-logo{font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);letter-spacing:2px}
+.main-nav-links{display:flex;gap:6px}
+.main-nav-link{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-decoration:none;padding:6px 12px;border:.5px solid transparent;transition:all .3s;white-space:nowrap}
+.main-nav-link:hover{color:var(--gold);border-color:rgba(201,169,110,.2)}
+.main-nav-link.active{color:var(--gold);border-color:rgba(201,169,110,.3)}
 
-.welcome-bg{position:absolute;inset:0;}
-.welcome-bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%;
-  filter:brightness(0.25) contrast(1.1) saturate(0.85);
-  transform:scale(1.08);animation:welcomeZoom 25s ease-out forwards;}
-@keyframes welcomeZoom{to{transform:scale(1);}}
+/* ── OPTION DIVIDER ── */
+.option-divider{padding:32px 48px 0;display:flex;align-items:center;gap:20px}
+.option-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.option-line{flex:1;height:.5px;background:linear-gradient(to right,rgba(201,169,110,.3),transparent)}
+.option-desc{font-size:10px;color:#444;font-style:italic;text-align:right;white-space:nowrap}
 
-.welcome-overlay{position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.75) 100%),
-  linear-gradient(to bottom,rgba(10,10,10,0.15) 0%,rgba(10,10,10,0.5) 100%);}
+/* ── SHARED GALLERY STRIP ── */
+.gallery-header{padding:32px 48px 16px;display:flex;align-items:baseline;justify-content:space-between;border-top:.5px solid var(--border)}
+.gallery-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.gallery-count{font-family:'Cormorant Garamond',serif;font-size:12px;color:rgba(245,240,235,.25);font-style:italic}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:0 3px}
+.gi{position:relative;overflow:hidden;cursor:pointer;background:var(--black3)}
+.gi img{width:100%;display:block;transition:transform .8s cubic-bezier(.25,.46,.45,.94);filter:brightness(.9)}
+.gi:hover img{transform:scale(1.05);filter:brightness(1)}
+.ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.85) 0%,transparent 55%);opacity:0;transition:opacity .35s;display:flex;align-items:flex-end;padding:14px}
+.gi:hover .ov{opacity:1}
+.cap-pub{display:block;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.cap-title{font-size:11px;font-weight:300;color:var(--cream)}
+.gallery-note{padding:10px 48px 0;font-size:10px;color:#333;font-style:italic}
 
-.welcome-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.particle{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;
-  opacity:0;animation:particleFloat linear infinite;}
-@keyframes particleFloat{
-  0%{opacity:0;transform:translateY(100vh) scale(0);}
-  10%{opacity:0.5;}90%{opacity:0.2;}
-  100%{opacity:0;transform:translateY(-10vh) scale(1);}
-}
+/* ── SHARED FOOTER ── */
+.section-footer{padding:24px 48px;border-top:.5px solid var(--border);border-bottom:4px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+.footer-text{font-size:11px;color:rgba(245,240,235,.25);font-style:italic}
+.footer-btn{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(201,169,110,.3);padding:8px 20px;background:transparent;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block}
+.footer-btn:hover{background:var(--gold);color:var(--black)}
 
-.welcome-content{position:relative;z-index:100;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:10px;}
+/* ── SHARED NAV BAR (inside each option) ── */
+.mock-nav{padding:16px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:.5px solid #181818}
+.mock-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:400;color:var(--gold);letter-spacing:2px}
+.mock-links{display:flex;gap:32px}
+.mock-link{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#555;text-decoration:none;transition:color .3s}
+.mock-link:hover,.mock-link.active{color:var(--gold)}
 
-.welcome-logo-mark{width:72px;height:72px;border:1px solid var(--gold);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
-  opacity:0;animation:wFadeIn 1s ease 0.3s forwards;}
-.welcome-logo-mark span{font-family:'Playfair Display',serif;font-size:1.8rem;
-  color:var(--gold);font-style:italic;}
+/* ════════════════════════════════════════
+   OPTION A — CINEMATIC SPLIT
+════════════════════════════════════════ */
+#option-a{background:var(--black)}
+.hero-a{position:relative;height:90vh;min-height:560px;display:flex;align-items:center;overflow:hidden}
+.hero-a-img{position:absolute;right:0;top:0;bottom:0;width:58%;overflow:hidden}
+.hero-a-img img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%) brightness(.75);animation:slowZoom 20s ease-in-out infinite alternate}
+@keyframes slowZoom{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hero-a-grad{position:absolute;inset:0;background:linear-gradient(to right,var(--black) 35%,rgba(8,8,8,.55) 60%,transparent 82%)}
+.hero-a-grad2{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top,var(--black),transparent)}
+.hero-a-content{position:relative;z-index:2;padding:0 48px;max-width:560px;animation:fadeUp 1s ease forwards .3s;opacity:0}
+.a-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.a-eyebrow::before{content:'';width:32px;height:.5px;background:var(--gold)}
+.a-title{font-family:'Playfair Display',serif;font-size:clamp(52px,7vw,88px);font-weight:300;line-height:1;color:var(--cream);margin-bottom:26px;letter-spacing:-1px}
+.a-title em{font-style:italic;color:var(--gold)}
+.a-body{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:rgba(245,240,235,.5);line-height:1.9;max-width:400px;margin-bottom:36px}
+.a-divider{width:48px;height:.5px;background:var(--gold);margin-bottom:32px}
+.a-scroll{display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,.28)}
+.a-scroll::before{content:'';width:40px;height:.5px;background:rgba(245,240,235,.18)}
 
-.welcome-name{font-family:'Playfair Display',serif;
-  font-size:clamp(2.5rem,7vw,5rem);color:var(--white-pure);
-  letter-spacing:10px;text-transform:uppercase;font-weight:400;
-  opacity:0;animation:wFadeIn 1s ease 0.6s forwards;}
+/* ════════════════════════════════════════
+   OPTION B — STATS GRID
+════════════════════════════════════════ */
+#option-b{background:var(--black)}
+.hero-b{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.hero-b-left{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;border-right:.5px solid #1a1a1a}
+.b-eyebrow{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.b-eyebrow::before{content:'';width:24px;height:.5px;background:var(--gold)}
+.b-title{font-family:'Playfair Display',serif;font-size:clamp(44px,5vw,70px);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:26px}
+.b-body{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:300;color:rgba(245,240,235,.45);line-height:1.85;margin-bottom:48px}
+.b-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid #1e1e1e;border-left:.5px solid #1e1e1e}
+.b-stat{padding:20px;border-right:.5px solid #1e1e1e;border-bottom:.5px solid #1e1e1e}
+.b-stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:300;color:var(--gold);line-height:1}
+.b-stat-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:5px}
+.hero-b-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:#111}
+.b-thumb{overflow:hidden;background:#1a1a1a}
+.b-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(20%) brightness(.8);transition:all .6s}
+.b-thumb:hover img{filter:grayscale(0%) brightness(1)}
 
-.welcome-tagline{font-family:'Cormorant Garamond',serif;
-  font-size:clamp(0.9rem,1.8vw,1.2rem);font-style:italic;
-  color:var(--gold-light);letter-spacing:3px;margin-top:4px;
-  opacity:0;animation:wFadeIn 1s ease 0.9s forwards;}
+/* ════════════════════════════════════════
+   OPTION C — MINIMAL TYPE
+════════════════════════════════════════ */
+#option-c{background:var(--black)}
+.hero-c{min-height:80vh;display:flex;flex-direction:column;justify-content:center}
+.hero-c-top{padding:72px 48px 48px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:48px;border-bottom:.5px solid #1a1a1a}
+.c-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.c-title{font-family:'Playfair Display',serif;font-size:clamp(64px,9vw,120px);font-weight:300;line-height:.95;color:var(--cream);letter-spacing:-2px}
+.c-right{text-align:right}
+.c-bignum{font-family:'Playfair Display',serif;font-size:96px;font-weight:300;color:rgba(201,169,110,.1);line-height:1;letter-spacing:-4px}
+.c-bignum-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#3a3a3a;margin-top:-6px}
+.hero-c-bottom{padding:36px 48px;display:flex;align-items:center;justify-content:space-between}
+.c-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:300;color:rgba(245,240,235,.38);max-width:480px;line-height:1.8}
+.c-scroll{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,.22);display:flex;align-items:center;gap:12px;white-space:nowrap}
+.c-scroll::after{content:'';width:36px;height:.5px;background:rgba(245,240,235,.15)}
 
-.welcome-divider{width:80px;height:1px;
-  background:linear-gradient(to right,transparent,var(--gold),transparent);
-  margin:30px 0;transform:scaleX(0);animation:wLine 1.2s ease 1.2s forwards;}
+/* ════════════════════════════════════════
+   OPTION D — PHOTO WALL
+════════════════════════════════════════ */
+#option-d{background:var(--black)}
+.hero-d{position:relative;height:90vh;min-height:580px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.d-wall{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.d-photo{overflow:hidden;background:#111}
+.d-photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(100%) brightness(.28) contrast(1.1);animation:drift 25s ease-in-out infinite alternate}
+.d-photo:nth-child(2) img{animation-delay:-6s}
+.d-photo:nth-child(3) img{animation-delay:-12s}
+.d-photo:nth-child(4) img{animation-delay:-18s}
+@keyframes drift{from{transform:scale(1.05) translateY(0)}to{transform:scale(1.05) translateY(-3%)}}
+.d-veil{position:absolute;inset:0;background:rgba(8,8,8,.48)}
+.d-hline-top,.d-hline-bot{position:absolute;left:48px;right:48px;height:.5px;background:rgba(201,169,110,.18)}
+.d-hline-top{top:calc(50% - 90px)}
+.d-hline-bot{top:calc(50% + 90px)}
+.d-content{position:relative;z-index:2;text-align:center;animation:fadeIn 1.2s ease forwards .3s;opacity:0}
+.d-eyebrow{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(201,169,110,.65);margin-bottom:18px}
+.d-title{font-family:'Playfair Display',serif;font-size:clamp(72px,12vw,140px);font-weight:300;line-height:.9;color:var(--cream);letter-spacing:-3px;margin-bottom:18px}
+.d-title em{font-style:italic;color:var(--gold)}
+.d-sub{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,235,.28);display:flex;align-items:center;justify-content:center;gap:16px}
+.d-sub::before,.d-sub::after{content:'';width:40px;height:.5px;background:rgba(201,169,110,.22)}
+.d-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;animation:bounce 2.5s ease-in-out infinite}
+.d-arrow span{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,169,110,.3)}
+.d-chevron{width:16px;height:16px;border-right:.5px solid rgba(201,169,110,.3);border-bottom:.5px solid rgba(201,169,110,.3);transform:rotate(45deg)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-#enterBtn{
-  padding:16px 56px;
-  border:1px solid var(--gold);color:var(--gold);background:transparent;
-  font-family:'Didact Gothic',sans-serif;font-size:0.65rem;
-  letter-spacing:6px;text-transform:uppercase;
-  cursor:pointer;transition:background 0.4s ease,color 0.4s ease;
-  opacity:0;animation:wFadeIn 1s ease 1.5s forwards;
-  position:relative;z-index:200;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-}
-#enterBtn:hover,#enterBtn:active{background:var(--gold);color:var(--black);}
+/* ════════════════════════════════════════
+   OPTION E — EDITORIAL SPLIT
+════════════════════════════════════════ */
+#option-e{background:var(--black)}
+.hero-e{display:grid;grid-template-columns:220px 1fr;min-height:80vh}
+.hero-e-img{overflow:hidden;background:#111;position:relative;border-right:.5px solid #1a1a1a}
+.hero-e-img img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(.85)}
+.hero-e-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.5) 0%,transparent 50%)}
+.hero-e-right{display:grid;grid-template-rows:1fr auto 1fr}
+.e-top{padding:52px 48px;border-bottom:.5px solid #1a1a1a;display:flex;flex-direction:column;justify-content:center}
+.e-eyebrow{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.e-title{font-family:'Playfair Display',serif;font-size:clamp(44px,5vw,68px);font-weight:300;line-height:1.05;color:var(--cream)}
+.e-mid{padding:0 48px;border-bottom:.5px solid #1a1a1a;height:1px;display:flex;align-items:center}
+.e-divline{width:100%;height:.5px;background:linear-gradient(to right,var(--gold),transparent)}
+.e-bottom{padding:32px 48px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.e-desc{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:300;color:rgba(245,240,235,.45);line-height:1.85}
+.e-meta{display:flex;flex-direction:column;gap:18px;align-items:flex-end}
+.e-meta-item{text-align:right}
+.e-meta-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:300;color:var(--gold);line-height:1}
+.e-meta-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:3px}
 
-.welcome-footer{position:absolute;bottom:40px;left:0;right:0;z-index:100;
-  display:flex;justify-content:center;gap:30px;
-  opacity:0;animation:wFadeIn 1s ease 1.8s forwards;}
-.welcome-footer a{color:var(--grey);text-decoration:none;font-size:0.6rem;
-  letter-spacing:3px;text-transform:uppercase;transition:color 0.3s;}
-.welcome-footer a:hover{color:var(--gold);}
+/* ════════════════════════════════════════
+   OPTION F — MAGAZINE COVER
+════════════════════════════════════════ */
+#option-f{background:var(--black)}
+.hero-f{position:relative;height:90vh;min-height:580px;overflow:hidden}
+.hero-f-bg{position:absolute;inset:0}
+.hero-f-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.42) contrast(1.05)}
+.f-topbar{position:absolute;top:0;left:0;right:0;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:.5px solid rgba(201,169,110,.12);background:rgba(8,8,8,.35);backdrop-filter:blur(6px)}
+.f-issue{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(201,169,110,.55)}
+.f-tagline{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,235,.25)}
+.f-side{position:absolute;right:28px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:center;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,169,110,.28);white-space:nowrap}
+.f-content{position:absolute;bottom:0;left:0;right:0;padding:52px 48px;background:linear-gradient(to top,rgba(8,8,8,.97) 0%,rgba(8,8,8,.65) 50%,transparent 100%)}
+.f-category{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.f-title{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,100px);font-weight:300;line-height:.92;color:var(--cream);letter-spacing:-2px;margin-bottom:18px}
+.f-desc{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:300;color:rgba(245,240,235,.45);max-width:460px;line-height:1.8}
 
-@keyframes wFadeIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-@keyframes wLine{to{transform:scaleX(1);}}
+/* ════════════════════════════════════════
+   OPTION G — MARQUEE + FEATURED CARDS
+   100% Wix Studio / Velo compatible
+   No flex tricks · No iframes
+════════════════════════════════════════ */
+#option-g{background:var(--black)}
 
-/* ==================== NAV ==================== */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 48px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:transparent;opacity:0;pointer-events:none;
-  transition:opacity 0.6s ease,background 0.5s ease,padding 0.5s ease;}
-nav.visible{opacity:1;pointer-events:auto;}
-nav.scrolled{background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);
-  padding:16px 48px;border-bottom:1px solid rgba(197,165,90,0.15);}
+/* Marquee ticker strip */
+.g-marquee-wrap{overflow:hidden;border-top:.5px solid #1a1a1a;border-bottom:.5px solid #1a1a1a;padding:14px 0;background:#080808}
+.g-marquee-track{display:flex;gap:0;animation:marqueeScroll 18s linear infinite;width:max-content}
+.g-marquee-item{font-family:'Playfair Display',serif;font-size:15px;font-weight:300;font-style:italic;color:rgba(201,169,110,.5);padding:0 32px;white-space:nowrap;letter-spacing:.5px}
+.g-marquee-item span{color:rgba(201,169,110,.2);margin:0 8px;font-style:normal}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.logo{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:6px;
-  text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500;}
-.logo span{display:block;font-size:0.55rem;letter-spacing:4px;color:var(--grey-light);
-  margin-top:2px;font-family:'Didact Gothic',sans-serif;}
+/* Hero content */
+.hero-g{padding:72px 48px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:80vh}
+.g-left{}
+.g-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.g-eyebrow::before{content:'';width:28px;height:.5px;background:var(--gold)}
+.g-title{font-family:'Playfair Display',serif;font-size:clamp(52px,6vw,84px);font-weight:300;line-height:.95;color:var(--cream);letter-spacing:-1.5px;margin-bottom:32px}
+.g-title .g-word{display:inline-block;opacity:0;transform:translateY(20px);animation:wordReveal .7s ease forwards}
+.g-title .g-word:nth-child(1){animation-delay:.1s}
+.g-title .g-word:nth-child(2){animation-delay:.3s;color:var(--gold);font-style:italic}
+.g-body{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:300;color:rgba(245,240,235,.45);line-height:1.9;margin-bottom:40px;max-width:380px}
+.g-divider{width:40px;height:.5px;background:var(--gold);margin-bottom:32px}
+.g-scroll{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,.25);display:flex;align-items:center;gap:12px}
+.g-scroll::before{content:'';width:32px;height:.5px;background:rgba(245,240,235,.15)}
 
-.nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
-.nav-links a{color:var(--white);text-decoration:none;font-size:0.7rem;
-  letter-spacing:3px;text-transform:uppercase;position:relative;padding-bottom:4px;transition:color 0.3s;}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
-  background:var(--gold);transition:width 0.4s ease;}
-.nav-links a:hover{color:var(--gold);}
-.nav-links a:hover::after{width:100%;}
-.nav-links .dropdown{position:relative;}
-.nav-links .dropdown-content{position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  background:rgba(20,20,20,0.96);backdrop-filter:blur(20px);
-  border:1px solid rgba(197,165,90,0.15);padding:16px 24px;min-width:180px;
-  opacity:0;pointer-events:none;transition:all 0.3s ease;margin-top:12px;}
-.nav-links .dropdown:hover .dropdown-content{opacity:1;pointer-events:auto;margin-top:8px;}
-.dropdown-content a{display:block;padding:8px 0;font-size:0.65rem;white-space:nowrap;}
+/* Right — 3 featured cards */
+.g-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:3px}
+.g-card{position:relative;overflow:hidden;cursor:pointer;background:#111}
+.g-card.tall{grid-row:span 2}
+.g-card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(.75) grayscale(15%);transition:filter .5s,transform .7s cubic-bezier(.25,.46,.45,.94)}
+.g-card:hover img{filter:brightness(1) grayscale(0%);transform:scale(1.04)}
+.g-card-num{position:absolute;top:14px;left:14px;font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(201,169,110,.6);transition:color .3s}
+.g-card:hover .g-card-num{color:var(--gold)}
+.g-card-info{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(to top,rgba(8,8,8,.88) 0%,transparent 100%);opacity:0;transform:translateY(8px);transition:all .4s}
+.g-card:hover .g-card-info{opacity:1;transform:translateY(0)}
+.g-card-pub{display:block;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.g-card-title{font-size:11px;font-weight:300;color:var(--cream);font-family:'Outfit',sans-serif}
 
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;background:none;border:none;}
-.hamburger span{width:28px;height:1.5px;background:var(--gold);transition:all 0.3s ease;}
-.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,4px);}
-.hamburger.active span:nth-child(2){opacity:0;}
-.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-4px);}
+/* Stats row below hero */
+.g-stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:.5px solid #1a1a1a}
+.g-stat{padding:24px 48px;border-right:.5px solid #1a1a1a}
+.g-stat:last-child{border-right:none}
+.g-stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:300;color:var(--gold);line-height:1}
+.g-stat-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#444;margin-top:6px}
 
-.mobile-menu{position:fixed;inset:0;background:rgba(10,10,10,0.98);z-index:999;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
-  opacity:0;pointer-events:none;transition:opacity 0.5s ease;}
-.mobile-menu.active{opacity:1;pointer-events:auto;}
-.mobile-menu a{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--white);
-  text-decoration:none;letter-spacing:4px;text-transform:uppercase;transition:color 0.3s;}
-.mobile-menu a:hover{color:var(--gold);}
+@keyframes wordReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ==================== HERO ==================== */
-.hero{height:100vh;min-height:700px;position:relative;display:flex;overflow:hidden;}
-.hero-image-container{position:absolute;inset:0;}
-.hero-image-container img{width:100%;height:100%;object-fit:cover;object-position:center 15%;
-  filter:brightness(0.45) contrast(1.1);transform:scale(1.05);animation:heroZoom 15s ease-out forwards;}
-@keyframes heroZoom{to{transform:scale(1);}}
-.hero-gradient{position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,transparent 30%),
-  linear-gradient(to top,var(--black) 0%,transparent 50%),
-  linear-gradient(to right,rgba(10,10,10,0.6) 0%,transparent 60%);}
-
-.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:100px 8vw 12vh;max-width:750px;}
-.hero-label{font-size:0.65rem;letter-spacing:6px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeInUp 1s ease 0.2s forwards;}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4.2rem);
-  line-height:1.05;font-weight:400;color:var(--white-pure);margin-bottom:24px;
-  opacity:0;animation:fadeInUp 1s ease 0.4s forwards;}
-.hero-title em{font-style:italic;color:var(--gold-light);}
-.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.8vw,1.3rem);
-  color:var(--grey-light);line-height:1.7;max-width:500px;opacity:0;animation:fadeInUp 1s ease 0.6s forwards;}
-.hero-cta{margin-top:40px;display:flex;gap:20px;opacity:0;animation:fadeInUp 1s ease 0.8s forwards;}
-
-.btn-primary{display:inline-block;padding:14px 40px;border:1px solid var(--gold);color:var(--black);
-  background:var(--gold);font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;
-  text-decoration:none;font-family:'Didact Gothic',sans-serif;transition:all 0.4s ease;cursor:pointer;}
-.btn-primary:hover{background:transparent;color:var(--gold);}
-.btn-outline{display:inline-block;padding:14px 40px;border:1px solid rgba(197,165,90,0.4);
-  color:var(--white);background:transparent;font-size:0.65rem;letter-spacing:4px;
-  text-transform:uppercase;text-decoration:none;font-family:'Didact Gothic',sans-serif;
-  transition:all 0.4s ease;cursor:pointer;}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-
-.hero-scroll{position:absolute;bottom:40px;right:48px;z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  opacity:0;animation:fadeInUp 1s ease 1s forwards;}
-.hero-scroll span{font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;
-  color:var(--grey);writing-mode:vertical-rl;}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);
-  animation:scrollPulse 2s ease-in-out infinite;}
-@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-
-/* ==================== ABOUT ==================== */
-.about{padding:140px 8vw;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;}
-.about::before{content:'ELEGANCE';position:absolute;top:80px;right:-40px;
-  font-family:'Playfair Display',serif;font-size:10rem;color:rgba(197,165,90,0.03);
-  letter-spacing:10px;pointer-events:none;}
-.about-image{position:relative;}
-.about-image img{width:100%;height:650px;object-fit:cover;filter:grayscale(20%) contrast(1.05);}
-.about-image::before{content:'';position:absolute;top:-20px;left:-20px;width:100%;height:100%;
-  border:1px solid rgba(197,165,90,0.25);z-index:-1;}
-.about-image .image-label{position:absolute;bottom:30px;right:-40px;font-size:0.6rem;
-  letter-spacing:3px;text-transform:uppercase;color:var(--gold);writing-mode:vertical-rl;
-  background:var(--black);padding:12px 8px;}
-.about-text{padding-left:40px;}
-.section-label{font-size:0.6rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);
-  margin-bottom:20px;display:flex;align-items:center;gap:16px;}
-.section-label::before{content:'';width:40px;height:1px;background:var(--gold);}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);
-  font-weight:400;line-height:1.15;margin-bottom:30px;color:var(--white-pure);}
-.section-title em{font-style:italic;color:var(--gold-light);}
-.about-text p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.85;
-  color:var(--grey-light);margin-bottom:20px;}
-.signature{font-family:'Playfair Display',serif;font-style:italic;font-size:1.5rem;
-  color:var(--gold);margin-top:30px;}
-.accolades{display:flex;gap:40px;margin-top:40px;padding-top:30px;border-top:1px solid rgba(197,165,90,0.15);}
-.accolade{text-align:center;}
-.accolade-number{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--gold);display:block;}
-.accolade-label{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:4px;}
-
-/* ==================== PORTFOLIO ==================== */
-.portfolio{padding:120px 8vw 100px;position:relative;}
-.portfolio-header{text-align:center;margin-bottom:80px;}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.portfolio-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:3/4;}
-.portfolio-item.wide{grid-column:span 2;aspect-ratio:3/2;}
-.portfolio-item img{width:100%;height:100%;object-fit:cover;
-  transition:transform 0.8s ease,filter 0.8s ease;filter:grayscale(30%);}
-.portfolio-item:hover img{transform:scale(1.06);filter:grayscale(0%);}
-.portfolio-overlay{position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(10,10,10,0.85) 0%,transparent 60%);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:30px;
-  opacity:0;transition:opacity 0.5s ease;}
-.portfolio-item:hover .portfolio-overlay{opacity:1;}
-.portfolio-overlay h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--white-pure);margin-bottom:4px;}
-.portfolio-overlay span{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-
-/* ==================== MARQUEE ==================== */
-.marquee-section{padding:60px 0;border-top:1px solid rgba(197,165,90,0.1);
-  border-bottom:1px solid rgba(197,165,90,0.1);overflow:hidden;}
-.marquee-track{display:flex;gap:60px;animation:marquee 20s linear infinite;white-space:nowrap;}
-.marquee-track span{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);
-  color:rgba(197,165,90,0.15);font-style:italic;flex-shrink:0;}
-.marquee-track span.dot{color:var(--gold);font-size:0.8rem;display:flex;align-items:center;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ==================== MAGAZINE ==================== */
-.magazine-feature{padding:120px 8vw;position:relative;}
-.magazine-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;}
-.magazine-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
-.magazine-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;filter:grayscale(20%);}
-.magazine-item:hover img{transform:scale(1.05);filter:grayscale(0%);}
-.mag-label{position:absolute;bottom:0;left:0;right:0;padding:20px 16px 16px;
-  background:linear-gradient(to top,rgba(10,10,10,0.9),transparent);
-  font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);
-  transform:translateY(100%);transition:transform 0.4s ease;}
-.magazine-item:hover .mag-label{transform:translateY(0);}
-
-/* ==================== TESTIMONIALS ==================== */
-.testimonials{padding:120px 8vw;text-align:center;position:relative;background:var(--black-soft);}
-.testimonial-card{max-width:700px;margin:60px auto 0;}
-.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2vw,1.6rem);
-  font-style:italic;line-height:1.8;color:var(--cream);position:relative;padding:0 20px;}
-.testimonial-quote::before{content:'\201C';font-family:'Playfair Display',serif;font-size:6rem;
-  color:var(--gold);opacity:0.3;position:absolute;top:-40px;left:-10px;line-height:1;}
-.testimonial-author{margin-top:30px;font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
-.testimonial-role{font-size:0.6rem;color:var(--grey);letter-spacing:2px;margin-top:4px;}
-
-/* ==================== BOOKING ==================== */
-.booking-cta{padding:160px 8vw;text-align:center;position:relative;overflow:hidden;}
-.booking-cta::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,rgba(197,165,90,0.06) 0%,transparent 70%);}
-.booking-cta .section-title{font-size:clamp(2.5rem,5vw,4.5rem);}
-.booking-cta p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--grey-light);
-  max-width:550px;margin:20px auto 40px;line-height:1.8;}
-
-/* ==================== INSTAGRAM ==================== */
-.insta-section{padding:80px 8vw 100px;}
-.insta-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;}
-.insta-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
-.insta-item{aspect-ratio:1;overflow:hidden;cursor:pointer;position:relative;}
-.insta-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease,filter 0.5s ease;filter:brightness(0.85);}
-.insta-item:hover img{transform:scale(1.08);filter:brightness(1);}
-.insta-item::after{content:'';position:absolute;inset:0;background:rgba(197,165,90,0.15);opacity:0;transition:opacity 0.3s;}
-.insta-item:hover::after{opacity:1;}
-
-/* ==================== FOOTER ==================== */
-footer{padding:80px 8vw 40px;border-top:1px solid rgba(197,165,90,0.1);background:var(--black);}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px;margin-bottom:60px;}
-.footer-brand .logo{font-size:1.2rem;margin-bottom:20px;display:inline-block;}
-.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--grey);line-height:1.7;max-width:300px;}
-.footer-col h4{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
-.footer-col a{display:block;color:var(--grey);text-decoration:none;font-size:0.8rem;margin-bottom:12px;transition:color 0.3s;letter-spacing:1px;}
-.footer-col a:hover{color:var(--gold-light);}
-.footer-social{display:flex;gap:16px;margin-top:8px;}
-.footer-social a{width:40px;height:40px;border:1px solid rgba(197,165,90,0.25);
-  display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:0.75rem;
-  letter-spacing:0;transition:all 0.3s;margin:0;}
-.footer-social a:hover{border-color:var(--gold);color:var(--gold);background:rgba(197,165,90,0.05);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;
-  padding-top:30px;border-top:1px solid rgba(197,165,90,0.08);}
-.footer-bottom span{font-size:0.65rem;color:var(--grey);letter-spacing:2px;}
-
-/* ==================== REVEAL ==================== */
-.reveal{opacity:0;transform:translateY(40px);transition:all 0.9s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-
-/* ==================== RESPONSIVE ==================== */
-@media(max-width:1024px){
-  .about{grid-template-columns:1fr;gap:50px;}.about-text{padding-left:0;}
-  .about-image img{height:500px;}.about-image .image-label{right:10px;}
-  .portfolio-grid{grid-template-columns:1fr 1fr;}.portfolio-item.wide{grid-column:span 2;}
-  .magazine-grid{grid-template-columns:repeat(2,1fr);}
-  .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
-}
-@media(max-width:768px){
-  nav{padding:18px 24px;}nav.scrolled{padding:14px 24px;}
-  .nav-links{display:none;}.hamburger{display:flex;}
-  .hero-content{padding:80px 6vw 8vh;}
-  .hero-cta{flex-direction:column;gap:12px;}
-  .btn-primary,.btn-outline{text-align:center;}
-  .about{padding:80px 6vw;}.about::before{display:none;}
-  .about-image::before{top:-10px;left:-10px;}.about-image img{height:400px;}
-  .accolades{gap:24px;}.accolade-number{font-size:2rem;}
-  .portfolio{padding:80px 6vw 60px;}
-  .portfolio-grid{grid-template-columns:1fr;gap:16px;}
-  .portfolio-item.wide{grid-column:span 1;aspect-ratio:3/4;}
-  .portfolio-overlay{opacity:1;}
-  .magazine-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
-  .mag-label{transform:translateY(0);}
-  .booking-cta{padding:100px 6vw;}
-  .insta-grid{grid-template-columns:repeat(3,1fr);}
-  .footer-top{grid-template-columns:1fr;gap:30px;}
-  .footer-bottom{flex-direction:column;gap:12px;text-align:center;}
-  .hero-scroll{display:none;}
-}
-@media(max-width:480px){
-  .hero-title{font-size:2.2rem;}.section-title{font-size:1.8rem;}
-  .about-image img{height:340px;}
-  .accolades{flex-direction:column;gap:20px;align-items:flex-start;}
-  .insta-grid{grid-template-columns:repeat(2,1fr);}
-  .welcome-name{letter-spacing:4px;}
-}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 <body>
 
-<!-- ==================== WELCOME GATE ==================== -->
-<div id="welcomeGate">
-  <div class="welcome-bg">
-    <!-- Welcome BG: Indian woman in elegant sari -->
-    <img src="https://images.unsplash.com/photo-1621786030484-4c855abb6121?w=1600&q=80" alt="Fashion">
+<!-- STICKY OPTION NAV -->
+<nav class="main-nav">
+  <div class="main-nav-logo">Angela Clark · Portfolio Options</div>
+  <div class="main-nav-links">
+    <a class="main-nav-link active" href="#option-a">A · Cinematic</a>
+    <a class="main-nav-link" href="#option-b">B · Stats Grid</a>
+    <a class="main-nav-link" href="#option-c">C · Minimal</a>
+    <a class="main-nav-link" href="#option-d">D · Photo Wall</a>
+    <a class="main-nav-link" href="#option-e">E · Editorial</a>
+    <a class="main-nav-link" href="#option-f">F · Magazine</a>
+    <a class="main-nav-link" href="#option-g">G · Marquee Reveal</a>
   </div>
-  <div class="welcome-overlay"></div>
-  <div class="welcome-particles" id="particles"></div>
-  <div class="welcome-content">
-    <div class="welcome-logo-mark"><span>C</span></div>
-    <h1 class="welcome-name">Chitrangana</h1>
-    <p class="welcome-tagline">International Fashion Model &amp; Creative Director</p>
-    <div class="welcome-divider"></div>
-    <button id="enterBtn">Enter Site</button>
-  </div>
-  <div class="welcome-footer">
-    <a href="#">Instagram</a>
-    <a href="#">Facebook</a>
-    <a href="#">YouTube</a>
-    <a href="#">LinkedIn</a>
-  </div>
-</div>
-
-<!-- ==================== NAV ==================== -->
-<nav id="mainNav">
-  <a href="#" class="logo">Chitrangana<span>International Fashion Model</span></a>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#about">My Story</a></li>
-    <li class="dropdown">
-      <a href="#">Portfolio</a>
-      <div class="dropdown-content">
-        <a href="#">Fashion Editorial</a>
-        <a href="#">Portrait</a>
-        <a href="#">Magazine Covers</a>
-        <a href="#">Glamour &amp; Beauty</a>
-        <a href="#">Video</a>
-        <a href="#">Behind the Scene</a>
-      </div>
-    </li>
-    <li><a href="#booking">Bookings</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
-  </ul>
-  <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#" class="mob-link">Home</a>
-  <a href="#about" class="mob-link">My Story</a>
-  <a href="#portfolio" class="mob-link">Portfolio</a>
-  <a href="#booking" class="mob-link">Bookings</a>
-  <a href="#testimonials" class="mob-link">Testimonials</a>
+<!-- ══════════════════════════════════════
+     OPTION A — CINEMATIC SPLIT
+══════════════════════════════════════ -->
+<div id="option-a">
+  <div class="option-divider">
+    <div class="option-tag">Option A</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Cinematic split · Left text / Right photo</div>
+  </div>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
+    </div>
+  </div>
+  <div class="hero-a">
+    <div class="hero-a-img">
+      <img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_1200,h_1600,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt="Angela Clark Portrait">
+    </div>
+    <div class="hero-a-grad"></div>
+    <div class="hero-a-grad2"></div>
+    <div class="hero-a-content">
+      <div class="a-eyebrow">Portfolio · Portrait</div>
+      <h1 class="a-title">Port<em>rait</em></h1>
+      <p class="a-body">Intimate, character-driven portraiture — capturing the essence of the subject through light, texture and emotion.</p>
+      <div class="a-divider"></div>
+      <div class="a-scroll">Selected works below</div>
+    </div>
+  </div>
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Arrow Magazine</span><span class="cap-title">"I Smell Red"</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Swarovski</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">"Kiss From the Rose"</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+  </div>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
 </div>
 
-<!-- ==================== HERO ==================== -->
-<section class="hero">
-  <div class="hero-image-container">
-    <!-- Hero: Indian model fashion shot -->
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1600&q=80" alt="Fashion Model">
-    <div class="hero-gradient"></div>
+<!-- ══════════════════════════════════════
+     OPTION B — STATS GRID
+══════════════════════════════════════ -->
+<div id="option-b">
+  <div class="option-divider">
+    <div class="option-tag">Option B</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Stats grid · Split layout with achievement numbers</div>
   </div>
-  <div class="hero-content">
-    <p class="hero-label">Miss India International Glamour</p>
-    <h1 class="hero-title">Grace, <em>Power</em> &amp; Timeless Beauty</h1>
-    <p class="hero-subtitle">International fashion model, creative director, and style icon — bringing the richness of Indian heritage to global runways and luxury brand campaigns.</p>
-    <div class="hero-cta">
-      <a href="#booking" class="btn-primary">Book Chitrangana</a>
-      <a href="#portfolio" class="btn-outline">View Portfolio</a>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
     </div>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
-</section>
-
-<!-- ==================== ABOUT ==================== -->
-<section class="about" id="about">
-  <div class="about-image reveal">
-    <!-- About: elegant portrait -->
-    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=800&q=80" alt="Portrait">
-    <span class="image-label">Since 2018</span>
-  </div>
-  <div class="about-text reveal">
-    <p class="section-label">My Story</p>
-    <h2 class="section-title">Learning to Love Yourself is <em>Everything</em></h2>
-    <p>Rooted in a proud Rajput heritage from Jaipur, Chitrangana brings an unmistakable blend of regal poise and modern sophistication to every project. From walking the ramps of Lakme Fashion Week to gracing international magazine covers, her journey is one of fierce determination, cultural pride, and effortless grace.</p>
-    <p>She proves that fashion has no age limit — working exclusively with luxury houses and couture designers to create campaigns that celebrate the timeless beauty of Indian women on the world stage.</p>
-    <div class="signature">Chitrangana Sharma</div>
-    <div class="accolades">
-      <div class="accolade"><span class="accolade-number">40+</span><span class="accolade-label">Magazine Features</span></div>
-      <div class="accolade"><span class="accolade-number">8+</span><span class="accolade-label">Years Modelling</span></div>
-      <div class="accolade"><span class="accolade-number">15+</span><span class="accolade-label">Brand Campaigns</span></div>
+  <div class="hero-b">
+    <div class="hero-b-left">
+      <div class="b-eyebrow">Portfolio · Portrait</div>
+      <h1 class="b-title">Portrait</h1>
+      <p class="b-body">Intimate character studies — a fusion of light, elegance and vision, published across the world's leading fashion titles.</p>
+      <div class="b-stats">
+        <div class="b-stat"><div class="b-stat-num">35+</div><div class="b-stat-label">Works</div></div>
+        <div class="b-stat"><div class="b-stat-num">12+</div><div class="b-stat-label">Magazines</div></div>
+        <div class="b-stat"><div class="b-stat-num">20+</div><div class="b-stat-label">Campaigns</div></div>
+      </div>
+    </div>
+    <div class="hero-b-right">
+      <div class="b-thumb"><img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_600,h_700,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt=""></div>
+      <div class="b-thumb"><img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_600,h_700,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt=""></div>
+      <div class="b-thumb"><img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_600,h_700,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt=""></div>
+      <div class="b-thumb"><img src="https://static.wixstatic.com/media/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg/v1/fit/w_600,h_700,q_90/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg" alt=""></div>
     </div>
   </div>
-</section>
-
-<!-- ==================== MARQUEE ==================== -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span>Fashion Editorial</span><span class="dot">&bull;</span>
-    <span>Luxury Brands</span><span class="dot">&bull;</span>
-    <span>Magazine Covers</span><span class="dot">&bull;</span>
-    <span>Creative Direction</span><span class="dot">&bull;</span>
-    <span>Runway</span><span class="dot">&bull;</span>
-    <span>Portrait</span><span class="dot">&bull;</span>
-    <span>Fashion Editorial</span><span class="dot">&bull;</span>
-    <span>Luxury Brands</span><span class="dot">&bull;</span>
-    <span>Magazine Covers</span><span class="dot">&bull;</span>
-    <span>Creative Direction</span><span class="dot">&bull;</span>
-    <span>Runway</span><span class="dot">&bull;</span>
-    <span>Portrait</span><span class="dot">&bull;</span>
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_32b46fdc2ce04502b477758d20403aab~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_32b46fdc2ce04502b477758d20403aab~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_91f79040686640a396135f4d70359401~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_91f79040686640a396135f4d70359401~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">Portrait</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_a9a861fea99a4ad2a9a1abbc257c01fc~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_a9a861fea99a4ad2a9a1abbc257c01fc~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">IntElegance</span><span class="cap-title">Life of Luxury</span></div></div></div>
   </div>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
 </div>
 
-<!-- ==================== PORTFOLIO ==================== -->
-<section class="portfolio" id="portfolio">
-  <div class="portfolio-header reveal">
-    <p class="section-label" style="justify-content:center;">Portfolio</p>
-    <h2 class="section-title">A World of <em>Fashion</em></h2>
+<!-- ══════════════════════════════════════
+     OPTION C — MINIMAL TYPE
+══════════════════════════════════════ -->
+<div id="option-c">
+  <div class="option-divider">
+    <div class="option-tag">Option C</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Minimal type · Pure typography with ghost number</div>
   </div>
-  <div class="portfolio-grid">
-    <div class="portfolio-item wide reveal">
-      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1000&q=80" alt="Editorial">
-      <div class="portfolio-overlay"><h3>Fashion Editorial</h3><span>View Collection</span></div>
-    </div>
-    <div class="portfolio-item reveal">
-      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Portrait">
-      <div class="portfolio-overlay"><h3>Portrait</h3><span>View Collection</span></div>
-    </div>
-    <div class="portfolio-item reveal">
-      <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&q=80" alt="Glamour">
-      <div class="portfolio-overlay"><h3>Glamour &amp; Beauty</h3><span>View Collection</span></div>
-    </div>
-    <div class="portfolio-item reveal">
-      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Runway">
-      <div class="portfolio-overlay"><h3>Runway</h3><span>View Collection</span></div>
-    </div>
-    <div class="portfolio-item wide reveal">
-      <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=1000&q=80" alt="BTS">
-      <div class="portfolio-overlay"><h3>Behind the Scene</h3><span>View Collection</span></div>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
     </div>
   </div>
-</section>
+  <div class="hero-c">
+    <div class="hero-c-top">
+      <div>
+        <div class="c-eyebrow">Portfolio · Portrait</div>
+        <h1 class="c-title">Portrait</h1>
+      </div>
+      <div class="c-right">
+        <div class="c-bignum">35</div>
+        <div class="c-bignum-label">Images</div>
+      </div>
+    </div>
+    <div class="hero-c-bottom">
+      <p class="c-sub">Intimate character studies — capturing the essence of the subject through light, texture and emotion.</p>
+      <div class="c-scroll">Scroll to explore</div>
+    </div>
+  </div>
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Arrow Magazine</span><span class="cap-title">"I Smell Red"</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Swarovski</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">"Kiss From the Rose"</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+  </div>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
+</div>
 
-<!-- ==================== MAGAZINES ==================== -->
-<section class="magazine-feature reveal">
-  <div style="text-align:center;">
-    <p class="section-label" style="justify-content:center;">Publications</p>
-    <h2 class="section-title">Featured in <em>Magazines</em></h2>
+<!-- ══════════════════════════════════════
+     OPTION D — PHOTO WALL
+══════════════════════════════════════ -->
+<div id="option-d">
+  <div class="option-divider">
+    <div class="option-tag">Option D</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Photo wall · 4 B&W photos as background, giant centred title</div>
   </div>
-  <div class="magazine-grid">
-    <div class="magazine-item">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&q=80" alt="Mag1">
-      <div class="mag-label">Imirage Magazine</div>
-    </div>
-    <div class="magazine-item">
-      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&q=80" alt="Mag2">
-      <div class="mag-label">Vogue India</div>
-    </div>
-    <div class="magazine-item">
-      <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=500&q=80" alt="Mag3">
-      <div class="mag-label">Femina India</div>
-    </div>
-    <div class="magazine-item">
-      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80" alt="Mag4">
-      <div class="mag-label">Harper's Bazaar</div>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
     </div>
   </div>
-</section>
+  <div class="hero-d">
+    <div class="d-wall">
+      <div class="d-photo"><img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_600,h_900,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt=""></div>
+      <div class="d-photo"><img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_600,h_900,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt=""></div>
+      <div class="d-photo"><img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_600,h_900,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt=""></div>
+      <div class="d-photo"><img src="https://static.wixstatic.com/media/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg/v1/fit/w_600,h_900,q_90/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg" alt=""></div>
+    </div>
+    <div class="d-veil"></div>
+    <div class="d-hline-top"></div>
+    <div class="d-hline-bot"></div>
+    <div class="d-content">
+      <div class="d-eyebrow">Portfolio · Angela Clark · Brisbane</div>
+      <h1 class="d-title">Port<em>rait</em></h1>
+      <div class="d-sub">35 selected works</div>
+    </div>
+    <div class="d-arrow"><span>Scroll</span><div class="d-chevron"></div></div>
+  </div>
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_32b46fdc2ce04502b477758d20403aab~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_32b46fdc2ce04502b477758d20403aab~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_91f79040686640a396135f4d70359401~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_91f79040686640a396135f4d70359401~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">Portrait</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_a9a861fea99a4ad2a9a1abbc257c01fc~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_a9a861fea99a4ad2a9a1abbc257c01fc~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">IntElegance</span><span class="cap-title">Life of Luxury</span></div></div></div>
+  </div>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
+</div>
 
-<!-- ==================== TESTIMONIALS ==================== -->
-<section class="testimonials" id="testimonials">
-  <div class="reveal">
-    <p class="section-label" style="justify-content:center;">Testimonials</p>
-    <h2 class="section-title">Words of <em>Praise</em></h2>
-    <div class="testimonial-card">
-      <p class="testimonial-quote">Chitrangana commands the frame with an effortless regality. Her understanding of light, emotion, and movement makes every shoot feel like a masterpiece in the making.</p>
-      <p class="testimonial-author">Vikram Malhotra</p>
-      <p class="testimonial-role">Fashion Photographer, Mumbai</p>
+<!-- ══════════════════════════════════════
+     OPTION E — EDITORIAL SPLIT
+══════════════════════════════════════ -->
+<div id="option-e">
+  <div class="option-divider">
+    <div class="option-tag">Option E</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Editorial split · Tall portrait left, info panels right</div>
+  </div>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
     </div>
   </div>
-</section>
-
-<!-- ==================== BOOKING ==================== -->
-<section class="booking-cta" id="booking">
-  <div class="reveal">
-    <p class="section-label" style="justify-content:center;">Work With Me</p>
-    <h2 class="section-title">Let's Create <em>Something</em> Extraordinary</h2>
-    <p>Available for fashion editorials, brand campaigns, magazine features, runway, and creative direction. Enquire today to collaborate.</p>
-    <a href="mailto:bookings@chitrangana.com" class="btn-primary">Send Booking Enquiry</a>
-  </div>
-</section>
-
-<!-- ==================== INSTAGRAM ==================== -->
-<section class="insta-section">
-  <div class="insta-header reveal">
-    <div>
-      <p class="section-label">Follow the Journey</p>
-      <h2 class="section-title" style="font-size:1.6rem;">@chitrangana.official</h2>
+  <div class="hero-e">
+    <div class="hero-e-img">
+      <img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_600,h_1200,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt="Angela Clark">
     </div>
-    <a href="#" class="btn-outline" style="padding:10px 28px;">Follow</a>
-  </div>
-  <div class="insta-grid">
-    <div class="insta-item"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80" alt="IG1"></div>
-    <div class="insta-item"><img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=400&q=80" alt="IG2"></div>
-    <div class="insta-item"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&q=80" alt="IG3"></div>
-    <div class="insta-item"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt="IG4"></div>
-    <div class="insta-item"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="IG5"></div>
-  </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="logo">Chitrangana<span>International Fashion Model</span></a>
-      <p style="margin-top:20px;">Bringing Indian elegance and timeless beauty from Jaipur to the world stage. Available for luxury brand campaigns, couture editorials, and runway shows.</p>
-    </div>
-    <div class="footer-col"><h4>Explore</h4>
-      <a href="#">Home</a><a href="#about">My Story</a><a href="#portfolio">Portfolio</a>
-      <a href="#booking">Bookings</a><a href="#testimonials">Testimonials</a>
-    </div>
-    <div class="footer-col"><h4>Portfolio</h4>
-      <a href="#">Fashion Editorial</a><a href="#">Portrait</a><a href="#">Magazine Covers</a>
-      <a href="#">Glamour &amp; Beauty</a><a href="#">Video</a>
-    </div>
-    <div class="footer-col"><h4>Connect</h4>
-      <a href="mailto:bookings@chitrangana.com">bookings@chitrangana.com</a>
-      <a>Mumbai, India</a>
-      <div class="footer-social">
-        <a href="#">IG</a><a href="#">FB</a><a href="#">YT</a><a href="#">LI</a><a href="#">TK</a>
+    <div class="hero-e-right">
+      <div class="e-top">
+        <div class="e-eyebrow">Portfolio · Portrait</div>
+        <h1 class="e-title">Portrait</h1>
+      </div>
+      <div class="e-mid"><div class="e-divline"></div></div>
+      <div class="e-bottom">
+        <p class="e-desc">Intimate character studies — capturing the essence of the subject through light, texture and emotion.</p>
+        <div class="e-meta">
+          <div class="e-meta-item"><div class="e-meta-num">35+</div><div class="e-meta-label">Works</div></div>
+          <div class="e-meta-item"><div class="e-meta-num">12+</div><div class="e-meta-label">Magazines</div></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Chitrangana Sharma. All Rights Reserved.</span>
-    <span>Web Design By Your Studio</span>
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Swarovski</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">"Kiss From the Rose"</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_32b46fdc2ce04502b477758d20403aab~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_32b46fdc2ce04502b477758d20403aab~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
   </div>
-</footer>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
+</div>
 
-<!-- ==================== SCRIPTS ==================== -->
+<!-- ══════════════════════════════════════
+     OPTION F — MAGAZINE COVER
+══════════════════════════════════════ -->
+<div id="option-f">
+  <div class="option-divider">
+    <div class="option-tag">Option F</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Magazine cover · Full bleed hero with editorial overlay</div>
+  </div>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
+    </div>
+  </div>
+  <div class="hero-f">
+    <div class="hero-f-bg"><img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_1400,h_1800,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt="Angela Clark"></div>
+    <div class="f-topbar">
+      <div class="f-issue">Portfolio Collection · 2025</div>
+      <div class="f-tagline">International Fashion Model · Brisbane, Australia</div>
+    </div>
+    <div class="f-side">Angela Clark · Portrait Series · 2025</div>
+    <div class="f-content">
+      <div class="f-category">Portrait Photography</div>
+      <h1 class="f-title">Portrait</h1>
+      <p class="f-desc">Intimate, character-driven portraiture — a fusion of light, elegance and vision published across the world's leading fashion titles.</p>
+    </div>
+  </div>
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Swarovski</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">"Kiss From the Rose"</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_c82441a6b32a4b39bca52ea3425a4897~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+  </div>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     OPTION G — MARQUEE + FEATURED CARDS
+     100% Wix Studio / Velo compatible
+══════════════════════════════════════ -->
+<div id="option-g">
+  <div class="option-divider">
+    <div class="option-tag">Option G</div>
+    <div class="option-line"></div>
+    <div class="option-desc">Marquee ticker + featured cards · 100% Wix Studio &amp; Velo compatible</div>
+  </div>
+  <div class="mock-nav">
+    <div class="mock-logo">Angela Clark</div>
+    <div class="mock-links">
+      <a class="mock-link" href="#">Home</a>
+      <a class="mock-link active" href="#">Portfolio</a>
+      <a class="mock-link" href="#">About</a>
+      <a class="mock-link" href="#">Contact</a>
+    </div>
+  </div>
+
+  <!-- Gold marquee ticker -->
+  <div class="g-marquee-wrap">
+    <div class="g-marquee-track">
+      <span class="g-marquee-item">Portrait<span>·</span></span>
+      <span class="g-marquee-item">Angela Clark<span>·</span></span>
+      <span class="g-marquee-item">Brisbane<span>·</span></span>
+      <span class="g-marquee-item">International Model<span>·</span></span>
+      <span class="g-marquee-item">35 Works<span>·</span></span>
+      <span class="g-marquee-item">12 Magazines<span>·</span></span>
+      <span class="g-marquee-item">Portrait<span>·</span></span>
+      <span class="g-marquee-item">Angela Clark<span>·</span></span>
+      <span class="g-marquee-item">Brisbane<span>·</span></span>
+      <span class="g-marquee-item">International Model<span>·</span></span>
+      <span class="g-marquee-item">35 Works<span>·</span></span>
+      <span class="g-marquee-item">12 Magazines<span>·</span></span>
+    </div>
+  </div>
+
+  <!-- Main hero -->
+  <div class="hero-g">
+    <div class="g-left">
+      <div class="g-eyebrow">Portfolio · Portrait</div>
+      <h1 class="g-title">
+        <span class="g-word">Port</span><span class="g-word">rait</span>
+      </h1>
+      <p class="g-body">Intimate character studies — capturing the essence of the subject through light, texture and emotion.</p>
+      <div class="g-divider"></div>
+      <div class="g-scroll">Selected works below</div>
+    </div>
+    <div class="g-right">
+      <!-- Tall card left -->
+      <div class="g-card tall">
+        <img src="https://static.wixstatic.com/media/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg/v1/fit/w_600,h_900,q_90/d91080_f2ebf52f559d495bb491c9deaeea3bc4~mv2.jpg" alt="I Smell Red">
+        <div class="g-card-num">01</div>
+        <div class="g-card-info"><span class="g-card-pub">Arrow Magazine</span><span class="g-card-title">"I Smell Red"</span></div>
+      </div>
+      <!-- Two stacked cards right -->
+      <div class="g-card">
+        <img src="https://static.wixstatic.com/media/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg/v1/fit/w_400,h_500,q_90/d91080_03e68557445e4db4993b896845b16d15~mv2.jpg" alt="Swarovski">
+        <div class="g-card-num">02</div>
+        <div class="g-card-info"><span class="g-card-pub">Swarovski</span><span class="g-card-title">Campaign</span></div>
+      </div>
+      <div class="g-card">
+        <img src="https://static.wixstatic.com/media/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg/v1/fit/w_400,h_500,q_90/d91080_4faa72a6bdaa44ac83329285430d2e12~mv2.jpg" alt="Kiss From the Rose">
+        <div class="g-card-num">03</div>
+        <div class="g-card-info"><span class="g-card-pub">Editorial</span><span class="g-card-title">"Kiss From the Rose"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="g-stats-row">
+    <div class="g-stat"><div class="g-stat-num">35+</div><div class="g-stat-label">Portrait Works</div></div>
+    <div class="g-stat"><div class="g-stat-num">12+</div><div class="g-stat-label">Magazines</div></div>
+    <div class="g-stat"><div class="g-stat-num">20+</div><div class="g-stat-label">Campaigns</div></div>
+    <div class="g-stat"><div class="g-stat-num">10+</div><div class="g-stat-label">Cover Stories</div></div>
+  </div>
+
+  <div class="gallery-header"><div class="gallery-label">Selected Works</div><div class="gallery-count">35 images · for reference</div></div>
+  <div class="gallery">
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_fbd18b5f8679479085fa9a297177f15c~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Mariana Jewerly</span><span class="cap-title">Campaign</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_91f79040686640a396135f4d70359401~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_91f79040686640a396135f4d70359401~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">Editorial</span><span class="cap-title">Portrait</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_a9a861fea99a4ad2a9a1abbc257c01fc~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_a9a861fea99a4ad2a9a1abbc257c01fc~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">IntElegance</span><span class="cap-title">Life of Luxury</span></div></div></div>
+    <div class="gi"><img src="https://static.wixstatic.com/media/d91080_af1928c87a994018b6382f8f711d6715~mv2.jpg/v1/fit/w_400,h_600,q_90/d91080_af1928c87a994018b6382f8f711d6715~mv2.jpg" alt=""><div class="ov"><div><span class="cap-pub">IntElegance</span><span class="cap-title">Madam Wu</span></div></div></div>
+  </div>
+  <div class="gallery-note">↑ Gallery for reference — full 35-image gallery via Wix Pro Gallery (Collage · Fit mode)</div>
+  <div class="section-footer"><div class="footer-text">Enquiries · Bookings · Collaborations</div><a class="footer-btn" href="#">Book Angela</a></div>
+</div>
+
 <script>
-// Particles
-(function(){
-  var c=document.getElementById('particles');
-  for(var i=0;i<25;i++){
-    var p=document.createElement('div');
-    p.className='particle';
-    p.style.left=Math.random()*100+'%';
-    p.style.animationDuration=(8+Math.random()*15)+'s';
-    p.style.animationDelay=(Math.random()*10)+'s';
-    var s=(1+Math.random()*2)+'px';
-    p.style.width=s;p.style.height=s;
-    c.appendChild(p);
-  }
-})();
-
-// ENTER SITE
-document.getElementById('enterBtn').addEventListener('click', function(e){
-  e.preventDefault();
-  e.stopPropagation();
-  var gate = document.getElementById('welcomeGate');
-  var nav = document.getElementById('mainNav');
-  gate.classList.add('leaving');
-  setTimeout(function(){
-    gate.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    nav.classList.add('visible');
-  }, 1200);
-});
-
-// Also support touch
-document.getElementById('enterBtn').addEventListener('touchend', function(e){
-  e.preventDefault();
-  this.click();
-});
-
-// Hamburger
-document.getElementById('hamburgerBtn').addEventListener('click', function(){
-  document.getElementById('mobileMenu').classList.toggle('active');
-  this.classList.toggle('active');
-});
-document.querySelectorAll('.mob-link').forEach(function(a){
-  a.addEventListener('click', function(){
-    document.getElementById('mobileMenu').classList.remove('active');
-    document.getElementById('hamburgerBtn').classList.remove('active');
+// Highlight active nav link on scroll
+const sections = document.querySelectorAll('[id^="option-"]');
+const navLinks = document.querySelectorAll('.main-nav-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.main-nav-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
   });
-});
-
-// Nav scroll
-window.addEventListener('scroll', function(){
-  var nav = document.getElementById('mainNav');
-  if(window.scrollY > 60) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
-
-// Reveal
-var obs = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
 </script>
 </body>
 </html>
